@@ -24,6 +24,18 @@
     align-items: center
 }
 
+// Mapas
+$footer: (
+    1: rgb(226, 175, 7),
+    2: rgb(226, 125, 7),
+    3: red);
+
+@each $clave, $valor in $footer {
+    .btn--#{$clave} {
+        background-color: $valor;
+    } 
+}
+
 a {
     color:$color_primario;
     font-size: 20px;
@@ -69,6 +81,60 @@ a {
     height: 600px;
 }
 
+.flex_form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #0b0a0a;
+    margin: 30px 10px;
+}
+
+.form {
+    min-width: 400px;
+    flex: 1;
+    text-align: center;
+    padding: 30px;
+}
+
+.form_img {
+    flex: 1;
+    padding: 10px;
+    min-width: 300px;
+}
+
+.form_img img {
+    width: 90%;
+    margin: auto;    
+}
+
+.form_input {
+    width: 100%;
+    padding: 7px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 4px solid darkgoldenrod;
+    background: transparent;
+    color: white;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 20px;
+        &:focus {
+            border-bottom: 4px solid rgb(234, 250, 1);
+            background:linear-gradient(to bottom, transparent,rgb(29, 29, 29));
+            outline: none;
+        }
+}
+
+.form textarea {
+    resize: none;
+}
+
+.form input[type="submit"] {
+    background-color: darkgoldenrod;
+    border-bottom: none;
+    padding: 12px;
+}
+
 .footer {
     grid-area: footer;
     display: flex;
@@ -79,13 +145,16 @@ a {
     justify-content: center;
 }
 
-.direccion {
+@mixin flex-conteiner {
     justify-content: center;
     align-content: center;
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 20px;
     padding: 30px;
     margin: auto;
+}
+.direccion {
+    @include flex-conteiner;
 }
 
 .redes1 {
@@ -96,10 +165,8 @@ a {
 }
 
 .redes2 {
-    display: flex;
-    padding: 25px;
-    justify-content: center;
-    align-items: center;
+    @extend .redes1;
+    background-color: #3b3b3b;
 }
 
 
